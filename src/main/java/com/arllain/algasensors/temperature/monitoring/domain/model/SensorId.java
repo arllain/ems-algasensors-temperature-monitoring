@@ -1,4 +1,4 @@
-package com.arllain.algasensors.temperature.monitoring.api.model;
+package com.arllain.algasensors.temperature.monitoring.domain.model;
 
 import io.hypersistence.tsid.TSID;
 import jakarta.persistence.Embeddable;
