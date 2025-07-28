@@ -17,3 +17,14 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: 'true'
+    properties:
+      hibernate:
+          format_sql: true
+# Configurações de logging
+logging:
+  level:
+    # Define o nível de log para o Hibernate SQL como DEBUG para mostrar as queries
+    org.hibernate.SQL: DEBUG
+    # Define o nível de log para os parâmetros de bind do JDBC como TRACE
+    # Isso mostrará os valores que estão sendo passados para os '?' nas queries
+    org.hibernate.orm.jdbc.bind: TRACE
