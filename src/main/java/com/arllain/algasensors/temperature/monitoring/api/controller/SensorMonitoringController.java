@@ -6,6 +6,7 @@ import com.arllain.algasensors.temperature.monitoring.domain.model.SensorMonitor
 import com.arllain.algasensors.temperature.monitoring.domain.repository.SensorMonitoringRepostory;
 import io.hypersistence.tsid.TSID;
 import lombok.RequiredArgsConstructor;
+import lombok.SneakyThrows;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -52,8 +53,13 @@ public class SensorMonitoringController {
 
     @DeleteMapping("/enable")
     @ResponseStatus(HttpStatus.NO_CONTENT)
+    @SneakyThrows
     public void disable(@PathVariable TSID sensorId) {
         SensorMonitoring sensorMonitoring = findByIdOrDefault(sensorId);
+//        if(!sensorMonitoring.getEnabled()) {
+//            Thread.sleep(Duration.ofSeconds(10));
+//        }
+
         sensorMonitoring.setEnabled(false);
         sensorMonitoringRepostory.saveAndFlush(sensorMonitoring);
     }
