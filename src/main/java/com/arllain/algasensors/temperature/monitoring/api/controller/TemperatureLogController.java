@@ -1,6 +1,6 @@
 package com.arllain.algasensors.temperature.monitoring.api.controller;
 
-import com.arllain.algasensors.temperature.monitoring.api.model.TemperatureLogOutput;
+import com.arllain.algasensors.temperature.monitoring.api.model.TemperatureLogData;
 import com.arllain.algasensors.temperature.monitoring.domain.model.SensorId;
 import com.arllain.algasensors.temperature.monitoring.domain.model.TemperatureLog;
 import com.arllain.algasensors.temperature.monitoring.domain.repository.TemperatureLogRepository;
@@ -23,14 +23,14 @@ public class TemperatureLogController {
 
 
     @GetMapping
-    public Page<TemperatureLogOutput> search(@PathVariable TSID sensorId,
-                                             @PageableDefault Pageable pageable) {
+    public Page<TemperatureLogData> search(@PathVariable TSID sensorId,
+                                           @PageableDefault Pageable pageable) {
 
         Page<TemperatureLog> temperatureLogs = temperatureLogRepository.findAllBySensorId(
                 new SensorId(sensorId), pageable);
 
         return temperatureLogs.map(temperatureLog ->
-                TemperatureLogOutput.builder()
+                TemperatureLogData.builder()
                         .id(temperatureLog.getId().getValue())
                         .value(temperatureLog.getValue())
                         .registeredAt(temperatureLog.getRegisteredAt())
