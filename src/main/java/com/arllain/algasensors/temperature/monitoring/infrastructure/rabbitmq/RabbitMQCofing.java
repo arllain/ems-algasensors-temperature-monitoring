@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 public class RabbitMQCofing {
 
     public static final String QUEUE_PROCESS_TEMPERATURE = "temperature-monitoring.process-temperature.v1.q";
-    public static final String QUEUE_ALERTING = "temperature-monitoring.process-alerting.v1.q";
+    public static final String QUEUE_ALERTING = "temperature-monitoring.alerting.v1.q";
 
     @Bean
     public Jackson2JsonMessageConverter jackson2JsonMessageConverter(ObjectMapper objectMapper) {
