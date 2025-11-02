@@ -34,7 +34,7 @@ public class RabbitMQListener {
     @SneakyThrows
     public void handleAlerting(@Payload  TemperatureLogData temperatureLogData) {
         sensorAlertService.handleAlert(temperatureLogData);
-        Thread.sleep(Duration.ofSeconds(5));
+//        Thread.sleep(Duration.ofSeconds(5));
     }
 
 }
